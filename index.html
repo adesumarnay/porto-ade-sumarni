@@ -43,27 +43,57 @@
         }
         /* Custom Print Styles for CV Modal */
         @media print {
-            body * {
-                visibility: hidden;
+            @page {
+                size: A4 portrait;
+                margin: 12mm;
             }
-            #cv-printable-area, #cv-printable-area * {
-                visibility: visible;
+            html, body {
+                background: #FFFFFF !important;
+                overflow: visible !important;
+                height: auto !important;
             }
-            #cv-printable-area {
-                position: fixed;
-                left: 0;
-                top: 0;
-                width: 100%;
-                margin: 0;
-                padding: 20px;
+            body > :not(#cv-modal) {
+                display: none !important;
+            }
+            #cv-modal {
+                position: static !important;
+                display: block !important;
+                inset: auto !important;
+                background: transparent !important;
+                padding: 0 !important;
+                overflow: visible !important;
+                max-height: none !important;
+            }
+            #cv-modal > div {
+                max-height: none !important;
+                overflow: visible !important;
                 box-shadow: none !important;
                 border: none !important;
-                background: white !important;
+                max-width: 100% !important;
+            }
+            #cv-modal > div > div:nth-child(2) {
+                overflow: visible !important;
+                padding: 0 !important;
+                background: #FFFFFF !important;
+            }
+            #cv-printable-area {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: #FFFFFF !important;
+            }
+            #cv-printable-area > div,
+            #cv-printable-area .space-y-4 > div {
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
             .no-print {
                 display: none !important;
             }
-        }
+        } 
         /* Subtle card hover elevation */
         .editorial-card {
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
