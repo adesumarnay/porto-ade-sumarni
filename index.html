@@ -27,9 +27,9 @@
                             card: '#FFFFFF',
                             ink: '#18181B',
                             muted: '#52525B',
-                            accent: '#E11D48', // Rose 600
-                            accentDark: '#BE123C', // Rose 700
-                            accentSoft: '#FFE4E6', // Rose 100
+                            accent: '#E11D48',
+                            accentDark: '#BE123C',
+                            accentSoft: '#FFE4E6',
                         }
                     }
                 }
@@ -37,10 +37,18 @@
         }
     </script>
     <style>
-        body {
+        html, body {
             background-color: #FAF9F6;
             color: #18181B;
+            overflow-x: hidden;
+            max-width: 100%;
         }
+
+        #keahlian, #keahlian * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
         /* Custom Print Styles for CV Modal */
         @media print {
             @page {
@@ -50,12 +58,8 @@
             html, body {
                 background: #FFFFFF !important;
                 overflow: visible !important;
-                overflow-x: hidden; max-width: 100%;
                 height: auto !important;
-            }
-            #keahlian, #keahlian * {
-                max-width: 100%;
-                box-sizing: border-box;
+                max-width: none !important;
             }
             body > :not(#cv-modal) {
                 display: none !important;
@@ -98,7 +102,8 @@
             .no-print {
                 display: none !important;
             }
-        } 
+        }
+
         /* Subtle card hover elevation */
         .editorial-card {
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
@@ -157,7 +162,6 @@
 
     <!-- Hero Section -->
     <header id="tentang" class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-        <!-- Subtle decorative background element -->
         <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-96 h-96 bg-rose-200/30 rounded-full blur-3xl pointer-events-none"></div>
         
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -210,41 +214,26 @@
                     </div>
                 </div>
 
-                <!-- Right Portrait Frame with Interactive Local File Loader -->
+                <!-- Right Portrait Frame -->
                 <div class="w-64 sm:w-72 md:w-80 flex-shrink-0">
                     <div class="relative group">
-                        <!-- Offset Decorative Border -->
                         <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-rose-200 via-stone-200 to-amber-100 opacity-80 blur-sm group-hover:opacity-100 transition"></div>
                         
-                        <!-- Main Photo Container -->
                         <div class="relative bg-white p-2.5 rounded-3xl shadow-xl border border-stone-200/80">
                             <div class="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-stone-100 flex items-center justify-center">
-                                <!-- Attempts to load IMG_1571.jpeg if present locally; falls back cleanly to stylized avatar & upload prompt -->
                                 <img id="profile-photo" 
                                      src="IMG_1571.jpeg" 
                                      alt="Foto Profil Ade Sumarni" 
                                      onerror="handleImageFallback(this)"
                                      class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                                
-                                <!-- Fallback / Overlay Upload Trigger -->
-                                <label for="photo-upload-input" title="Klik untuk memuat foto lokal (IMG_1571.jpeg)" 
-                                       class="absolute inset-0 bg-zinc-900/45 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-4 text-center cursor-pointer backdrop-blur-[2px]">
-                                    <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center mb-2">
-                                        <i data-lucide="camera" class="w-5 h-5 text-white"></i>
-                                    </div>
-                                    <span class="text-xs font-bold tracking-wide">Ganti / Muat Foto Lokal</span>
-                                    <span class="text-[11px] text-stone-200 mt-1">Pilih file IMG_1571.jpeg</span>
-                                </label>
-                                <input type="file" id="photo-upload-input" accept="image/*" class="hidden" onchange="previewLocalPhoto(event)">
                             </div>
 
-                            <!-- Caption Bar -->
-                            <div class="pt-3 pb-1 px-2 flex items-center justify-between">
-                                <div>
-                                    <p class="text-xs font-bold text-zinc-900">Ade Sumarni</p>
-                                    <p class="text-[11px] text-zinc-500">Jakarta Timur, Indonesia</p>
+                            <div class="pt-3 pb-1 px-2 flex items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <p class="text-xs font-bold text-zinc-900 truncate">Ade Sumarni</p>
+                                    <p class="text-[11px] text-zinc-500 truncate">Broadcast & Digital Media</p>
                                 </div>
-                                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex-shrink-0">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Siap Berkarya
                                 </span>
                             </div>
@@ -367,7 +356,7 @@
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5"></i>
-                                <span>Terlibat aktif dalam perencanaan strategis acara, komunikasi pihak eksternal, serta koordinasi logistik kegiatan.</span>
+                                <span>Terlibat aktif dalam perencanaan strategis acara, komunikasi pihak eksternal, serta koordinasi logistik kegiatan organisasi.</span>
                             </li>
                         </ul>
                     </div>
@@ -417,7 +406,6 @@
             <!-- Project 1: The Unsolved Piece -->
             <div data-category="tv" class="project-card editorial-card bg-white rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between">
                 <div>
-                    <!-- Stylized Visual Banner -->
                     <div class="h-44 bg-gradient-to-br from-amber-500 via-orange-600 to-rose-700 p-6 flex flex-col justify-between text-white relative overflow-hidden">
                         <div class="absolute right-0 bottom-0 opacity-15 translate-x-4 translate-y-4">
                             <i data-lucide="puzzle" class="w-32 h-32"></i>
@@ -453,7 +441,6 @@
             <!-- Project 2: Produksi Siaran Jak-FM & Feature Radio -->
             <div data-category="radio" class="project-card editorial-card bg-white rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between">
                 <div>
-                    <!-- Stylized Visual Banner -->
                     <div class="h-44 bg-gradient-to-br from-sky-600 via-indigo-700 to-slate-900 p-6 flex flex-col justify-between text-white relative overflow-hidden">
                         <div class="absolute right-0 bottom-0 opacity-15 translate-x-4 translate-y-4">
                             <i data-lucide="mic-2" class="w-32 h-32"></i>
@@ -489,7 +476,6 @@
             <!-- Project 3: Program Berita & Konten Digital -->
             <div data-category="digital" class="project-card editorial-card bg-white rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between">
                 <div>
-                    <!-- Stylized Visual Banner -->
                     <div class="h-44 bg-gradient-to-br from-emerald-600 via-teal-700 to-zinc-900 p-6 flex flex-col justify-between text-white relative overflow-hidden">
                         <div class="absolute right-0 bottom-0 opacity-15 translate-x-4 translate-y-4">
                             <i data-lucide="tv" class="w-32 h-32"></i>
@@ -531,69 +517,69 @@
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 
                 <!-- Left Column: Keahlian & Pendidikan (7 Cols) -->
-                <div class="lg:col-span-7 space-y-12">
+                <div class="lg:col-span-7 min-w-0 space-y-12">
                     <!-- Skills -->
-                    <div>
+                    <div class="min-w-0">
                         <span class="text-xs font-bold tracking-widest uppercase text-rose-400">Kompetensi</span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 mb-6">Keahlian & Perangkat Kerja</h2>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 mb-6 break-words">Keahlian & Perangkat Kerja</h2>
                         <div class="grid sm:grid-cols-2 gap-3">
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="message-square" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Komunikasi Efektif & Negosiasi</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Komunikasi Efektif & Negosiasi</span>
                             </div>
                             
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="calendar-clock" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Manajemen Waktu & Organisasi</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Manajemen Waktu & Organisasi</span>
                             </div>
                             
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="search-check" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Perhatian Terhadap Detail</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Perhatian Terhadap Detail</span>
                             </div>
                             
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="zap" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Bekerja di Bawah Tekanan</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Bekerja di Bawah Tekanan</span>
                             </div>
                             
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="scissors" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Canva & CapCut (Editing)</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Canva & CapCut (Editing)</span>
                             </div>
                             
-                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl">
+                            <div class="flex items-center gap-3 bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl min-w-0">
                                 <div class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-sm font-medium text-zinc-100">Microsoft Office (Word, Excel, PPT)</span>
+                                <span class="text-sm font-medium text-zinc-100 break-words min-w-0">Microsoft Office (Word, Excel, PPT)</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Education -->
-                    <div class="pt-6 border-t border-zinc-800">
+                    <div class="pt-6 border-t border-zinc-800 min-w-0">
                         <span class="text-xs font-bold tracking-widest uppercase text-rose-400">Latar Belakang Akademik</span>
-                        <h2 class="text-2xl font-extrabold mt-1 mb-4">Pendidikan</h2>
-                        <div class="bg-zinc-800/50 border border-zinc-700/70 rounded-2xl p-6">
+                        <h2 class="text-2xl font-extrabold mt-1 mb-4 break-words">Pendidikan</h2>
+                        <div class="bg-zinc-800/50 border border-zinc-700/70 rounded-2xl p-6 min-w-0">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                <h3 class="text-lg font-bold text-white">Diploma 3 (D3) Penyiaran</h3>
+                                <h3 class="text-lg font-bold text-white break-words">Diploma 3 (D3) Penyiaran</h3>
                                 <span class="text-xs font-bold bg-rose-600/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full">
                                     2024 – Sekarang
                                 </span>
                             </div>
-                            <p class="text-sm font-semibold text-rose-400 mb-3">Politeknik Negeri Media Kreatif Jakarta (Polimedia)</p>
-                            <p class="text-sm text-zinc-400 leading-relaxed">
+                            <p class="text-sm font-semibold text-rose-400 mb-3 break-words">Politeknik Negeri Media Kreatif Jakarta (Polimedia)</p>
+                            <p class="text-sm text-zinc-400 leading-relaxed break-words">
                                 Fokus studi pada produksi media digital & televisi, manajemen produksi penyiaran, penulisan kreatif, serta strategi komunikasi publik.
                             </p>
                         </div>
@@ -601,7 +587,7 @@
                 </div>
 
                 <!-- Right Column: Personal Contact Card (5 Cols) -->
-                <div id="kontak" class="lg:col-span-5 bg-zinc-800/90 border border-zinc-700 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <div id="kontak" class="lg:col-span-5 min-w-0 bg-zinc-800/90 border border-zinc-700 rounded-3xl p-6 sm:p-8 shadow-xl">
                     <span class="inline-block text-xs font-bold tracking-widest uppercase text-rose-400 mb-2">Hubungi Saya</span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Kontak Pribadi</h2>
                     <p class="text-sm text-zinc-300 leading-relaxed mb-8">
@@ -611,7 +597,7 @@
                     <div class="space-y-4">
                         <!-- Direct WhatsApp Link -->
                         <a href="https://wa.me/6288293290032" target="_blank" rel="noopener noreferrer" 
-                           class="group flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/90 hover:bg-emerald-950/50 border border-zinc-700/80 hover:border-emerald-500/50 transition-all">
+                           class="group flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/90 hover:bg-emerald-950/50 border border-zinc-700/80 hover:border-emerald-500/50 transition-all min-w-0">
                             <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                                 <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
@@ -619,12 +605,12 @@
                                 <p class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Telepon / WhatsApp</p>
                                 <p class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors truncate">0882-9329-0032</p>
                             </div>
-                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-500 group-hover:text-emerald-400"></i>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-500 group-hover:text-emerald-400 flex-shrink-0"></i>
                         </a>
 
                         <!-- Direct Email Link -->
                         <a href="mailto:adesumarnay@gmail.com" 
-                           class="group flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/90 hover:bg-rose-950/40 border border-zinc-700/80 hover:border-rose-500/50 transition-all">
+                           class="group flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/90 hover:bg-rose-950/40 border border-zinc-700/80 hover:border-rose-500/50 transition-all min-w-0">
                             <div class="w-11 h-11 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
@@ -632,21 +618,8 @@
                                 <p class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Email</p>
                                 <p class="text-base font-bold text-white group-hover:text-rose-300 transition-colors truncate">adesumarnay@gmail.com</p>
                             </div>
-                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-500 group-hover:text-rose-400"></i>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-500 group-hover:text-rose-400 flex-shrink-0"></i>
                         </a>
-
-                        <!-- Domisili Info -->
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-zinc-900/60 border border-zinc-700/60">
-                            <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="map-pin" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Domisili</p>
-                                <p class="text-sm font-medium text-zinc-200 mt-0.5 leading-snug">
-                                    Jl. H. Taiman, Jakarta Timur, DKI Jakarta, 13760
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Copy Email Helper -->
@@ -676,11 +649,11 @@
             
             <!-- Modal Header Toolbar (Hidden when printing) -->
             <div class="no-print bg-zinc-900 text-white px-5 py-3.5 flex items-center justify-between gap-4 flex-shrink-0">
-                <div class="flex items-center gap-2.5">
-                    <i data-lucide="file-check-2" class="w-5 h-5 text-rose-400"></i>
-                    <span id="cv-modal-title" class="text-sm font-bold tracking-wide">Curriculum Vitae — Ade Sumarni</span>
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <i data-lucide="file-check-2" class="w-5 h-5 text-rose-400 flex-shrink-0"></i>
+                    <span id="cv-modal-title" class="text-sm font-bold tracking-wide truncate">Curriculum Vitae — Ade Sumarni</span>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 flex-shrink-0">
                     <button onclick="window.print()" class="inline-flex items-center gap-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition cursor-pointer">
                         <i data-lucide="printer" class="w-3.5 h-3.5"></i>
                         <span>Cetak / Simpan PDF</span>
@@ -698,10 +671,10 @@
                     <!-- CV Header -->
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b-2 border-zinc-900">
                         <img id="cv-modal-photo" src="IMG_1571.jpeg" alt="Foto Ade Sumarni" onerror="handleImageFallback(this)" class="w-24 h-28 object-cover object-top rounded-xl border border-stone-300 flex-shrink-0">
-                        <div class="text-center sm:text-left flex-1">
+                        <div class="text-center sm:text-left flex-1 min-w-0">
                             <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 uppercase">ADE SUMARNI</h1>
                             <p class="text-sm font-bold text-rose-600 mt-0.5">Broadcast & Digital Media Producer | D3 Penyiaran</p>
-                            <div class="mt-3 flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-1 text-xs text-zinc-600" 
+                            <div class="mt-3 flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-1 text-xs text-zinc-600">
                                 <span>📞 0882-9329-0032</span>
                                 <span>✉️ adesumarnay@gmail.com</span>
                             </div>
@@ -723,7 +696,7 @@
                             <div>
                                 <div class="flex justify-between items-baseline gap-2">
                                     <h3 class="text-sm font-bold text-zinc-900">Produser Utama (Proyek Program Media Kreatif)</h3>
-                                    <span class="text-xs font-semibold text-zinc-500">2026</span>
+                                    <span class="text-xs font-semibold text-zinc-500 flex-shrink-0">2026</span>
                                 </div>
                                 <p class="text-xs font-semibold text-zinc-600 mb-1">Politeknik Negeri Media Kreatif</p>
                                 <ul class="text-xs text-zinc-700 list-disc list-inside space-y-1">
@@ -736,7 +709,7 @@
                             <div>
                                 <div class="flex justify-between items-baseline gap-2">
                                     <h3 class="text-sm font-bold text-zinc-900">Kru Kreatif & Riset Konten (Proyek Penyiaran & Feature Radio)</h3>
-                                    <span class="text-xs font-semibold text-zinc-500">2026</span>
+                                    <span class="text-xs font-semibold text-zinc-500 flex-shrink-0">2026</span>
                                 </div>
                                 <p class="text-xs font-semibold text-zinc-600 mb-1">Politeknik Negeri Media Kreatif</p>
                                 <ul class="text-xs text-zinc-700 list-disc list-inside space-y-1">
@@ -748,7 +721,7 @@
                             <div>
                                 <div class="flex justify-between items-baseline gap-2">
                                     <h3 class="text-sm font-bold text-zinc-900">Assistant Producer (Magang)</h3>
-                                    <span class="text-xs font-semibold text-zinc-500">Juni 2025</span>
+                                    <span class="text-xs font-semibold text-zinc-500 flex-shrink-0">Juni 2025</span>
                                 </div>
                                 <p class="text-xs font-semibold text-zinc-600 mb-1">Radio Jak-FM (MARI Entertainment)</p>
                                 <ul class="text-xs text-zinc-700 list-disc list-inside space-y-1">
@@ -761,7 +734,7 @@
                             <div>
                                 <div class="flex justify-between items-baseline gap-2">
                                     <h3 class="text-sm font-bold text-zinc-900">Bendahara Umum (Himpunan Mahasiswa Penyiaran / HIMA)</h3>
-                                    <span class="text-xs font-semibold text-zinc-500">2025 – Sekarang</span>
+                                    <span class="text-xs font-semibold text-zinc-500 flex-shrink-0">2025 – Sekarang</span>
                                 </div>
                                 <p class="text-xs font-semibold text-zinc-600 mb-1">Politeknik Negeri Media Kreatif</p>
                                 <ul class="text-xs text-zinc-700 list-disc list-inside space-y-1">
@@ -802,10 +775,8 @@
 
     <!-- JavaScript Interactivity -->
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Mobile Navigation Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -820,10 +791,8 @@
             });
         });
 
-        // Graceful Fallback for Local Portrait Image if not in same directory during preview
         function handleImageFallback(imgElement) {
             imgElement.onerror = null;
-            // Clean editorial monogram fallback SVG data URI
             const fallbackSvg = `data:image/svg+xml;utf8,${encodeURIComponent(`
                 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
                     <defs>
@@ -837,27 +806,11 @@
                     <circle cx="200" cy="172" r="34" fill="#BE123C"/>
                     <path d="M135 280 C135 235, 265 235, 265 280 L265 310 L135 310 Z" fill="#BE123C"/>
                     <text x="200" y="365" font-family="sans-serif" font-size="18" font-weight="bold" fill="#18181B" text-anchor="middle">Ade Sumarni</text>
-                    <text x="200" y="392" font-family="sans-serif" font-size="12" fill="#52525B" text-anchor="middle">Klik bingkai untuk memuat foto</text>
                 </svg>
             `)}`;
             imgElement.src = fallbackSvg;
         }
 
-        // Allow User to Load Their Local Photo File Directly in Browser Preview
-        function previewLocalPhoto(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const mainPhoto = document.getElementById('profile-photo');
-                const cvPhoto = document.getElementById('cv-modal-photo');
-                if (mainPhoto) mainPhoto.src = e.target.result;
-                if (cvPhoto) cvPhoto.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Project Category Filter
         function filterProjects(category) {
             const cards = document.querySelectorAll('.project-card');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -881,7 +834,6 @@
             });
         }
 
-        // CV Modal Controls
         const cvModal = document.getElementById('cv-modal');
 
         function openCvModal() {
@@ -896,7 +848,6 @@
             document.body.style.overflow = '';
         }
 
-        // Close modal when clicking backdrop or pressing Escape
         cvModal.addEventListener('click', (e) => {
             if (e.target === cvModal) {
                 closeCvModal();
@@ -909,7 +860,6 @@
             }
         });
 
-        // Copy Email to Clipboard Helper
         function copyEmailAddress() {
             const email = 'adesumarnay@gmail.com';
             const tempInput = document.createElement('input');
