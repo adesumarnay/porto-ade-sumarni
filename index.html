@@ -50,7 +50,12 @@
             html, body {
                 background: #FFFFFF !important;
                 overflow: visible !important;
+                overflow-x: hidden; max-width: 100%;
                 height: auto !important;
+            }
+            #keahlian, #keahlian * {
+                max-width: 100%;
+                box-sizing: border-box;
             }
             body > :not(#cv-modal) {
                 display: none !important;
